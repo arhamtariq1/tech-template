@@ -108,13 +108,13 @@ function ServicesSection() {
     <section
       id="services"
       ref={sectionRef}
-      className="relative z-10 flex h-screen min-h-0 flex-col overflow-hidden bg-black"
+      className="relative z-10 flex h-screen min-h-0 flex-col overflow-hidden bg-zinc-100 dark:bg-black"
     >
       <div className="shrink-0 px-6 pt-16 text-center md:pt-20">
         <p className="mb-3 text-xs uppercase tracking-[0.22em] text-indigo-300">
           Our Services
         </p>
-        <h2 className="bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent sm:text-4xl md:text-5xl">
+        <h2 className="bg-gradient-to-b from-zinc-900 to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent dark:from-white dark:to-zinc-500 sm:text-4xl md:text-5xl">
           What we bring to the table
         </h2>
         {/* <p className="mx-auto mt-4 max-w-lg text-sm text-zinc-400 md:text-base">
@@ -135,7 +135,7 @@ function ServicesSection() {
               className="absolute inset-x-0 bottom-0 top-0 w-full max-w-full overflow-hidden will-change-transform"
               style={{ zIndex: 10 + index }}
             >
-              <article className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-[1.8rem] border border-white/[0.08] bg-zinc-950 shadow-[0_8px_60px_-12px_rgba(0,0,0,0.7)]">
+              <article className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-[1.8rem] border border-zinc-200 bg-white shadow-[0_8px_40px_-18px_rgba(0,0,0,0.25)] dark:border-white/[0.08] dark:bg-zinc-950 dark:shadow-[0_8px_60px_-12px_rgba(0,0,0,0.7)]">
                 <div
                   className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${service.accent} opacity-60`}
                 />
@@ -144,22 +144,22 @@ function ServicesSection() {
                   <div className="flex min-h-0 min-w-0 flex-col justify-between gap-3 overflow-hidden p-5 md:gap-4 md:p-8 lg:p-10">
                     <div className="min-w-0">
                       <div className="mb-1 flex items-center justify-between gap-3 md:mb-2">
-                        <span className="shrink-0 px-3 py-1 text-[11px] tracking-wider text-zinc-300 md:px-4 md:py-1.5">
+                        <span className="shrink-0 px-3 py-1 text-[11px] tracking-wider text-zinc-500 dark:text-zinc-300 md:px-4 md:py-1.5">
                           {/* Service {service.id} */}
                         </span>
-                        <span className="select-none text-[3rem] font-bold leading-none text-white/[0.04] sm:text-[4.5rem] md:text-[4rem]">
+                        <span className="select-none text-[3rem] font-bold leading-none text-zinc-900/[0.06] dark:text-white/[0.04] sm:text-[4.5rem] md:text-[4rem]">
                           {service.id}
                         </span>
                       </div>
 
-                      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] md:mb-4 md:h-11 md:w-11">
-                        <Icon className="h-4 w-4 text-indigo-200 md:h-5 md:w-5" />
+                      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-zinc-300 bg-zinc-100 dark:border-white/10 dark:bg-white/[0.04] md:mb-4 md:h-11 md:w-11">
+                        <Icon className="h-4 w-4 text-indigo-600 dark:text-indigo-200 md:h-5 md:w-5" />
                       </div>
 
-                      <h3 className="mb-1.5 text-lg font-semibold leading-tight text-white md:mb-2 md:text-3xl lg:text-4xl">
+                      <h3 className="mb-1.5 text-lg font-semibold leading-tight text-zinc-900 dark:text-white md:mb-2 md:text-3xl lg:text-4xl">
                         {service.title}
                       </h3>
-                      <p className="max-w-md text-[12px] leading-snug text-zinc-400 md:text-[15px] md:leading-relaxed">
+                      <p className="max-w-md text-[12px] leading-snug text-zinc-600 dark:text-zinc-400 md:text-[15px] md:leading-relaxed">
                         {service.desc}
                       </p>
                     </div>
@@ -167,7 +167,7 @@ function ServicesSection() {
                     <div className="shrink-0 pt-1 md:pt-2">
                       <Button
                         variant="outline"
-                        className="group rounded-full border-white/15 bg-white/[0.03] px-6 text-zinc-200 transition-all hover:border-white/30 hover:bg-white/[0.06]"
+                        className="group rounded-full border-zinc-300 bg-zinc-100 px-6 text-zinc-800 transition-all hover:border-zinc-400 hover:bg-zinc-200 dark:border-white/15 dark:bg-white/[0.03] dark:text-zinc-200 dark:hover:border-white/30 dark:hover:bg-white/[0.06]"
                       >
                         Explore Service
                         <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -177,7 +177,7 @@ function ServicesSection() {
 
                   <div className="relative hidden min-h-0 lg:block">
                     <div className="flex h-full min-h-[12rem] flex-col p-4 md:p-6">
-                      <div className="relative min-h-0 flex-1 overflow-hidden rounded-[1.2rem] border border-white/[0.06] bg-white/[0.02]">
+                      <div className="relative min-h-0 flex-1 overflow-hidden rounded-[1.2rem] border border-zinc-200 bg-zinc-100 dark:border-white/[0.06] dark:bg-white/[0.02]">
                         <Image
                           src={service.image}
                           alt={service.title}

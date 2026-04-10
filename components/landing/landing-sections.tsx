@@ -64,19 +64,19 @@ export function FaqSection() {
   return (
     <section
       id="faq"
-      className="relative z-10 scroll-mt-24 border-t border-white/[0.06] bg-zinc-950/40 px-6 py-20 md:py-28"
+      className="relative z-10 scroll-mt-24 border-t border-zinc-200 bg-zinc-50 px-6 py-20 dark:border-white/[0.06] dark:bg-zinc-950/40 md:py-28"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.12),transparent)]" />
       <div className="relative mx-auto max-w-7xl">
         <motion.div {...fade} className="mx-auto max-w-2xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1.5 text-[11px] uppercase tracking-[0.2em] text-zinc-300">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-3 py-1.5 text-[11px] uppercase tracking-[0.2em] text-zinc-600 dark:border-white/15 dark:bg-white/[0.04] dark:text-zinc-300">
             <HelpCircle className="h-3.5 w-3.5 text-indigo-300" />
             FAQ
           </div>
-          <h2 className="bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent md:text-4xl lg:text-5xl">
+          <h2 className="bg-gradient-to-b from-zinc-900 to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent dark:from-white dark:to-zinc-500 md:text-4xl lg:text-5xl">
             Questions, answered
           </h2>
-          <p className="mt-4 text-sm text-zinc-400 md:text-base">
+          <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400 md:text-base">
             Straight answers about how we work, timelines, and what you can expect
             before we ever sign.
           </p>
@@ -94,12 +94,12 @@ export function FaqSection() {
                 <AccordionItem
                   key={item.q}
                   value={`faq-${i}`}
-                  className="overflow-hidden rounded-2xl border-0 bg-white/[0.03] px-1 shadow-lg shadow-black/20 ring-1 ring-white/10"
+                  className="overflow-hidden rounded-2xl border border-zinc-200 bg-white px-1 shadow-lg shadow-zinc-900/10 ring-0 dark:border-0 dark:bg-white/[0.03] dark:shadow-black/20 dark:ring-1 dark:ring-white/10"
                 >
-                  <AccordionTrigger className="px-4 py-5 text-left text-[15px] font-medium text-white hover:no-underline md:px-5 md:text-base [&[data-state=open]]:text-indigo-200">
+                  <AccordionTrigger className="px-4 py-5 text-left text-[15px] font-medium text-zinc-900 hover:no-underline dark:text-white md:px-5 md:text-base [&[data-state=open]]:text-indigo-500 dark:[&[data-state=open]]:text-indigo-200">
                     {item.q}
                   </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-5 text-sm leading-relaxed text-zinc-400 md:px-5">
+                  <AccordionContent className="px-4 pb-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 md:px-5">
                     {item.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -112,7 +112,7 @@ export function FaqSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.55, delay: 0.08 }}
-            className="relative min-h-[320px] overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-zinc-900 lg:min-h-full"
+            className="relative min-h-[320px] overflow-hidden rounded-[1.75rem] border border-zinc-200 bg-zinc-900 dark:border-white/[0.1] lg:min-h-full"
           >
             <Image
               src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
@@ -147,14 +147,14 @@ export function FaqSection() {
 
 export function ProcessSection() {
   return (
-    <section id="process" className="relative z-10 scroll-mt-24 bg-black px-6 py-20 md:py-28">
+    <section id="process" className="relative z-10 scroll-mt-24 bg-zinc-50 px-6 py-20 dark:bg-black md:py-28">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.12),transparent)]" />
       <div className="mx-auto max-w-7xl">
         <motion.div {...fade} className="mx-auto max-w-2xl text-center">
           <p className="mb-3 text-xs uppercase tracking-[0.22em] text-indigo-300">
             How we work
           </p>
-          <h2 className="bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent md:text-4xl">
+          <h2 className="bg-gradient-to-b from-zinc-900 to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent dark:from-white dark:to-zinc-500 md:text-4xl">
             Agency process, but cinematic
           </h2>
           {/* <p className="mt-4 text-sm text-zinc-400 md:text-base">
@@ -195,24 +195,24 @@ const projects = [
 
 export function WorkShowcaseSection() {
   return (
-    <section id="work" className="relative z-10 scroll-mt-24 border-t border-white/[0.06] bg-zinc-950/50 px-6 py-20 md:py-28">
+    <section id="work" className="relative z-10 scroll-mt-24 border-t border-zinc-200 bg-zinc-100 px-6 py-20 dark:border-white/[0.06] dark:bg-zinc-950/50 md:py-28">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <motion.div {...fade} className="max-w-xl">
             <p className="mb-3 text-xs uppercase tracking-[0.22em] text-indigo-300">
               Selected work
             </p>
-            <h2 className="bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent md:text-4xl">
+            <h2 className="bg-gradient-to-b from-zinc-900 to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent dark:from-white dark:to-zinc-500 md:text-4xl">
               Interfaces that feel expensive
             </h2>
-            <p className="mt-4 text-xs text-zinc-400 md:text-sm">
+            <p className="mt-4 text-xs text-zinc-600 dark:text-zinc-400 md:text-sm">
               A snapshot of launches — from storefronts to internal tools — each
               tuned for clarity and conversion.
             </p>
           </motion.div>
           <Button
             variant="outline"
-            className="shrink-0 rounded-full border-white/15 bg-white/[0.03] text-zinc-200"
+            className="shrink-0 rounded-full border-zinc-300 bg-zinc-100 text-zinc-800 hover:bg-zinc-200 dark:border-white/15 dark:bg-white/[0.03] dark:text-zinc-200"
           >
             View case studies
             <ArrowRight className="ml-2 h-4 w-4" />
@@ -227,7 +227,7 @@ export function WorkShowcaseSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: i * 0.08 }}
-              className="group overflow-hidden rounded-3xl border border-white/[0.08] bg-zinc-900/40"
+              className="group overflow-hidden rounded-3xl border border-zinc-200 bg-white dark:border-white/[0.08] dark:bg-zinc-900/40"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
@@ -238,13 +238,13 @@ export function WorkShowcaseSection() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/40 px-3 py-1 text-[11px] text-zinc-200 backdrop-blur-md">
+                <span className="absolute left-4 top-4 rounded-full border border-zinc-300 bg-white/85 px-3 py-1 text-[11px] text-zinc-700 backdrop-blur-md dark:border-white/15 dark:bg-black/40 dark:text-zinc-200">
                   {p.tag}
                 </span>
               </div>
-              <div className="p-5">
-                <p className="text-lg font-semibold text-white">{p.title}</p>
-                <p className="mt-1 text-sm text-zinc-500">Brand, UX, build</p>
+              <div className="bg-zinc-100 p-5 dark:bg-zinc-900/70">
+                <p className="text-lg font-semibold text-zinc-900 dark:text-white">{p.title}</p>
+                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-500">Brand, UX, build</p>
               </div>
             </motion.div>
           ))}
@@ -289,19 +289,19 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section className="relative z-10 bg-black px-6 py-20 md:py-28">
+    <section className="relative z-10 bg-zinc-50 px-6 py-20 dark:bg-black md:py-28">
       <div className="mx-auto max-w-7xl">
         <motion.div {...fade} className="mx-auto max-w-2xl text-center">
           <p className="mb-3 text-xs uppercase tracking-[0.22em] text-indigo-300">
             Proof
           </p>
-          <h2 className="bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent md:text-4xl">
+          <h2 className="bg-gradient-to-b from-zinc-900 to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent dark:from-white dark:to-zinc-500 md:text-4xl">
             Teams that stayed after launch
           </h2>
         </motion.div>
 
         <div className="mt-8">
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-zinc-950/40 p-3 md:p-4">
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-zinc-200 bg-white p-3 dark:border-white/[0.08] dark:bg-zinc-950/40 md:p-4">
             <motion.div
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
@@ -326,19 +326,19 @@ export function TestimonialsSection() {
                     }}
                     transition={{ duration: 0.35 }}
                   >
-                    <Card className="h-full border-white/[0.08] bg-zinc-950/90 text-zinc-100 shadow-none backdrop-blur-sm">
+                    <Card className="h-full border-zinc-200 bg-zinc-50 text-zinc-900 shadow-none backdrop-blur-sm dark:border-white/[0.08] dark:bg-zinc-950/90 dark:text-zinc-100">
                       <CardHeader className="space-y-3 md:space-y-4">
                         <Quote className="h-8 w-8 text-indigo-400/70" />
-                        <CardDescription className="text-[15px] leading-relaxed text-zinc-300 md:text-base">
+                        <CardDescription className="text-[15px] leading-relaxed text-zinc-700 dark:text-zinc-300 md:text-base">
                           “{q.text}”
                         </CardDescription>
                       </CardHeader>
                       <CardFooter className="flex items-center justify-between border-t border-white/[0.06] pt-4">
                         <div className="flex flex-col items-start">
-                          <p className="text-sm font-medium text-white md:text-base">{q.name}</p>
+                          <p className="text-sm font-medium text-zinc-900 dark:text-white md:text-base">{q.name}</p>
                           <p className="text-xs text-zinc-500">{q.role}</p>
                         </div>
-                        <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] tracking-wide text-zinc-400">
+                        <span className="rounded-full border border-zinc-300 bg-zinc-100 px-3 py-1 text-[11px] tracking-wide text-zinc-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-400">
                           0{i + 1}
                         </span>
                       </CardFooter>
@@ -354,7 +354,7 @@ export function TestimonialsSection() {
               type="button"
               size="icon"
               variant="outline"
-              className="h-9 w-9 rounded-full border-white/15 bg-white/[0.03] text-zinc-200 hover:bg-white/[0.08]"
+              className="h-9 w-9 rounded-full border-zinc-300 bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:border-white/15 dark:bg-white/[0.03] dark:text-zinc-200 dark:hover:bg-white/[0.08]"
               onClick={() => goTo(activeIndex - 1)}
             >
               <ChevronLeft className="h-4 w-4" />
@@ -366,7 +366,7 @@ export function TestimonialsSection() {
                   key={q.name}
                   type="button"
                   onClick={() => goTo(i)}
-                  className={`h-1.5 rounded-full transition-all ${i === activeIndex ? 'w-7 bg-indigo-400' : 'w-2 bg-zinc-700 hover:bg-zinc-500'
+                  className={`h-1.5 rounded-full transition-all ${i === activeIndex ? 'w-7 bg-indigo-400' : 'w-2 bg-zinc-400 hover:bg-zinc-500 dark:bg-zinc-700'
                     }`}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
@@ -377,7 +377,7 @@ export function TestimonialsSection() {
               type="button"
               size="icon"
               variant="outline"
-              className="h-9 w-9 rounded-full border-white/15 bg-white/[0.03] text-zinc-200 hover:bg-white/[0.08]"
+              className="h-9 w-9 rounded-full border-zinc-300 bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:border-white/15 dark:bg-white/[0.03] dark:text-zinc-200 dark:hover:bg-white/[0.08]"
               onClick={() => goTo(activeIndex + 1)}
             >
               <ChevronRight className="h-4 w-4" />
@@ -418,16 +418,16 @@ const tiers = [
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="relative z-10 scroll-mt-24 border-t border-white/[0.06] bg-zinc-950/60 px-6 py-20 md:py-28">
+    <section id="pricing" className="relative z-10 scroll-mt-24 border-t border-zinc-200 bg-zinc-100 px-6 py-20 dark:border-white/[0.06] dark:bg-zinc-950/60 md:py-28">
       <div className="mx-auto max-w-7xl">
         <motion.div {...fade} className="mx-auto max-w-2xl text-center">
           <p className="mb-3 text-xs uppercase tracking-[0.22em] text-indigo-300">
             Engagement
           </p>
-          <h2 className="bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent md:text-4xl">
+          <h2 className="bg-gradient-to-b from-zinc-900 to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent dark:from-white dark:to-zinc-500 md:text-4xl">
             Clear tiers, no mystery invoices
           </h2>
-          <p className="mt-4 text-sm text-zinc-400 md:text-base">
+          <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400 md:text-base">
             Pick a lane — we will tailor scope in the first workshop call.
           </p>
         </motion.div>
@@ -442,24 +442,24 @@ export function PricingSection() {
 
 export function NewsletterCtaSection() {
   return (
-    <section className="relative z-10 bg-black px-6 py-20 md:py-24">
+    <section className="relative z-10 bg-zinc-50 px-6 py-20 dark:bg-black md:py-24">
       <div className="mx-auto max-w-4xl">
         <motion.div
           {...fade}
-          className="relative overflow-hidden rounded-[2rem] border border-white/[0.1] bg-gradient-to-br from-indigo-500/15 via-zinc-950 to-fuchsia-500/10 p-8 md:p-12"
+          className="relative overflow-hidden rounded-[2rem] border border-zinc-200 bg-gradient-to-br from-indigo-100/70 via-white to-fuchsia-100/50 p-8 dark:border-white/[0.1] dark:from-indigo-500/15 dark:via-zinc-950 dark:to-fuchsia-500/10 md:p-12"
         >
-          <div className="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 right-0 h-64 w-64 rounded-full bg-fuchsia-500/15 blur-3xl" />
+          <div className="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-indigo-300/25 blur-3xl dark:bg-indigo-500/20" />
+          <div className="pointer-events-none absolute -bottom-24 right-0 h-64 w-64 rounded-full bg-fuchsia-300/20 blur-3xl dark:bg-fuchsia-500/15" />
           <div className="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="max-w-xl">
-              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/30 px-3 py-1 text-[11px] text-zinc-300">
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white/80 px-3 py-1 text-[11px] text-zinc-600 dark:border-white/15 dark:bg-black/30 dark:text-zinc-300">
                 <MessageCircle className="h-3.5 w-3.5 text-indigo-300" />
                 Monthly field notes
               </div>
-              <h3 className="text-2xl font-semibold text-white md:text-3xl">
+              <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white md:text-3xl">
                 Get launch checklists, UI references, and experiments we are running.
               </h3>
-              <p className="mt-3 text-sm text-zinc-400">
+              <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
                 No fluff — one email every few weeks. Unsubscribe anytime.
               </p>
             </div>
@@ -470,11 +470,11 @@ export function NewsletterCtaSection() {
               <Input
                 type="email"
                 placeholder="you@company.com"
-                className="h-12 border-white/15 bg-black/40 text-white placeholder:text-zinc-500"
+                className="h-12 border-zinc-300 bg-white text-zinc-900 placeholder:text-zinc-500 dark:border-white/15 dark:bg-black/40 dark:text-white dark:placeholder:text-zinc-500"
               />
               <Button
                 type="submit"
-                className="h-12 shrink-0 rounded-full bg-white text-black hover:bg-zinc-200"
+                className="h-12 shrink-0 rounded-full bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
               >
                 Join
               </Button>
@@ -505,12 +505,12 @@ export function SiteFooter() {
   return (
     <footer
       id="contact"
-      className="relative z-10 scroll-mt-24 border-t border-white/[0.06] bg-black px-6 pb-12 pt-16"
+      className="relative z-10 scroll-mt-24 border-t border-zinc-200 bg-zinc-100 px-6 pb-12 pt-16 dark:border-white/[0.06] dark:bg-black"
     >
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="text-sm font-semibold tracking-[0.18em] text-white uppercase">
+            <p className="text-sm font-semibold tracking-[0.18em] text-zinc-900 uppercase dark:text-white">
               Noctra Studio
             </p>
             <p className="mt-3 max-w-sm text-sm text-zinc-500">
@@ -529,7 +529,7 @@ export function SiteFooter() {
                     <li key={l}>
                       <a
                         href="#"
-                        className="text-sm text-zinc-400 transition-colors hover:text-white"
+                        className="text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
                       >
                         {l}
                       </a>
@@ -540,7 +540,7 @@ export function SiteFooter() {
             ))}
           </div>
         </div>
-        <Separator className="my-10 bg-white/[0.08]" />
+        <Separator className="my-10 bg-zinc-300 dark:bg-white/[0.08]" />
         <div className="flex flex-col gap-3 text-xs text-zinc-600 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Noctra Studio. All rights reserved.</p>
           <div className="flex gap-6">

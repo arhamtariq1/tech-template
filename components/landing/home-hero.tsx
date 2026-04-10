@@ -18,6 +18,7 @@ import {
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
 import { Spotlight } from '@/components/ui/spotlight';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 const navLinks = [
   ['Work', '#work'],
@@ -146,15 +147,15 @@ const ShuffleGrid = () => {
 
 export function HomeHero() {
   return (
-    <div id="top" className="relative min-h-screen overflow-x-hidden bg-black text-white">
-      <div className="pointer-events-none absolute inset-0 bg-grid-white/[0.02]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_55%)]" />
+    <div id="top" className="relative min-h-screen overflow-x-hidden bg-zinc-50 text-zinc-900 dark:bg-black dark:text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:34px_34px] dark:bg-grid-white/[0.02]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,0,0,0.08),transparent_55%)] dark:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_55%)]" />
       <Spotlight className="-top-32 left-0 md:left-52 md:-top-24" fill="white" />
       <motion.div
         aria-hidden
         animate={{ x: [0, -18, 0], y: [0, 12, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        className="pointer-events-none absolute -left-20 top-32 h-72 w-72 rounded-full bg-white/8 blur-[90px]"
+        className="pointer-events-none absolute -left-20 top-32 h-72 w-72 rounded-full bg-zinc-500/15 blur-[90px] dark:bg-white/8"
       />
       <motion.div
         aria-hidden
@@ -170,11 +171,11 @@ export function HomeHero() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
-            className="inline-flex py-2 backdrop-blur-xl transition-colors hover:border-white/25 hover:bg-black/45"
+            className="inline-flex py-2 backdrop-blur-xl transition-colors hover:bg-zinc-900/10 dark:hover:bg-black/45"
             aria-label="Noctra Studio — back to top"
           >
 
-            <p className="text-sm font-medium tracking-[0.12em] text-zinc-100 uppercase">
+            <p className="text-sm font-medium tracking-[0.12em] text-zinc-900 uppercase dark:text-zinc-100">
               Noctra Studio.
             </p>
           </motion.a>
@@ -183,7 +184,7 @@ export function HomeHero() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.05 }}
-            className="hidden rounded-full border border-white/10 bg-black/30 px-1 py-1 backdrop-blur-xl md:block"
+            className="hidden rounded-full border border-zinc-300/60 bg-white/70 px-1 py-1 backdrop-blur-xl dark:border-white/10 dark:bg-black/30 md:block"
           >
             <NavigationMenu>
               <NavigationMenuList className="gap-1">
@@ -191,13 +192,13 @@ export function HomeHero() {
                   <NavigationMenuItem key={item}>
                     <NavigationMenuLink
                       href={href}
-                      className="group/navitem relative block rounded-full px-5 py-2 text-xs tracking-wide text-zinc-300 transition-colors hover:text-white"
+                      className="group/navitem relative block rounded-full px-5 py-2 text-xs tracking-wide text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                     >
                       <span>{item}</span>
                       {index === 0 && (
                         <motion.span
                           layoutId="nav-active-pill"
-                          className="absolute inset-0 -z-10 rounded-full bg-white/10"
+                          className="absolute inset-0 -z-10 rounded-full bg-zinc-900/10 dark:bg-white/10"
                         />
                       )}
                       <span className="absolute inset-x-4 -bottom-0.5 h-px scale-x-0 bg-gradient-to-r from-transparent via-indigo-300 to-transparent transition-transform duration-300 group-hover/navitem:scale-x-100" />
@@ -214,16 +215,17 @@ export function HomeHero() {
             transition={{ duration: 0.55, delay: 0.1 }}
             className="flex items-center gap-2"
           >
+            <ThemeToggle />
             <Button
               asChild
-              className="hidden h-9 rounded-full bg-white text-black hover:bg-zinc-200 md:inline-flex"
+              className="hidden h-9 rounded-full bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-white dark:text-black dark:hover:bg-zinc-200 md:inline-flex"
             >
               <a href="#contact">Let&apos;s Talk</a>
             </Button>
             <Button
               size="icon"
               variant="outline"
-              className="h-10 w-10 rounded-full border-white/20 bg-black/35 text-zinc-200 hover:bg-white/10 md:hidden"
+              className="h-10 w-10 rounded-full border-zinc-300 bg-white/70 text-zinc-800 hover:bg-white md:hidden dark:border-white/20 dark:bg-black/35 dark:text-zinc-200 dark:hover:bg-white/10"
             >
               <Menu className="h-4 w-4" />
             </Button>
@@ -235,21 +237,21 @@ export function HomeHero() {
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.div
             variants={fadeUp}
-            className="mb-3 inline-flex items-center gap-2 py-2 text-[10px] uppercase tracking-[0.18em] text-zinc-200"
+            className="mb-3 inline-flex items-center gap-2 py-2 text-[10px] uppercase tracking-[0.18em] text-zinc-600 dark:text-zinc-200"
           >
             Premium Growth Agency
           </motion.div>
 
           <motion.h1
             variants={fadeUp}
-            className="max-w-2xl bg-gradient-to-b from-white via-zinc-100 to-zinc-500 bg-clip-text text-xl font-semibold leading-[1.05] text-transparent sm:text-2xl md:text-3xl xl:text-5xl"
+            className="max-w-2xl bg-gradient-to-b from-zinc-950 via-zinc-700 to-zinc-500 bg-clip-text text-xl font-semibold leading-[1.05] text-transparent dark:from-white dark:via-zinc-100 dark:to-zinc-500 sm:text-2xl md:text-3xl xl:text-5xl"
           >
             We design dark, bold digital experiences.
           </motion.h1>
 
           <motion.p
             variants={fadeUp}
-            className="mt-7 max-w-xl text-[11px] leading-relaxed text-zinc-300 md:text-base"
+            className="mt-7 max-w-xl text-[11px] leading-relaxed text-zinc-600 dark:text-zinc-300 md:text-base"
           >
             Launch strategy, branding, and high-performance websites with a
             modern aesthetic.
@@ -271,13 +273,13 @@ export function HomeHero() {
             {/* Sleek Ghost Secondary Button */}
             <Button
               variant="ghost"
-              className="group relative h-12 px-2 text-zinc-400 transition-colors hover:bg-transparent hover:text-white"
+              className="group relative h-12 px-2 text-zinc-500 transition-colors hover:bg-transparent hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
             >
-              <Play className="mr-2 h-4 w-4 fill-transparent transition-colors group-hover:fill-white" />
+              <Play className="mr-2 h-4 w-4 fill-transparent transition-colors group-hover:fill-zinc-900 dark:group-hover:fill-white" />
               <span className="relative text-sm font-medium">
                 Watch Reel
                 {/* Animated underline effect */}
-                <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-zinc-900 transition-all duration-300 group-hover:w-full dark:bg-white"></span>
               </span>
             </Button>
           </motion.div>
@@ -291,7 +293,7 @@ export function HomeHero() {
               whileHover={{ scale: 1.02 }}
               className="group flex flex-col transition-all"
             >
-              <p className="text-3xl font-light tracking-tight text-white">
+              <p className="text-3xl font-light tracking-tight text-zinc-900 dark:text-white">
                 150 <span className="text-zinc-600 transition-colors group-hover:text-zinc-400">+</span>
               </p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-zinc-500">
@@ -300,13 +302,13 @@ export function HomeHero() {
             </motion.div>
 
             {/* Subtle Vertical Divider */}
-            <div className="hidden h-12 w-[1px] bg-white/10 sm:block"></div>
+            <div className="hidden h-12 w-[1px] bg-zinc-300 dark:bg-white/10 sm:block"></div>
 
             <motion.div
               whileHover={{ scale: 1.02 }}
               className="group flex flex-col transition-all"
             >
-              <p className="text-3xl font-light tracking-tight text-white">
+              <p className="text-3xl font-light tracking-tight text-zinc-900 dark:text-white">
                 98<span className="text-zinc-600 transition-colors group-hover:text-zinc-400">%</span>
               </p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-zinc-500">
@@ -315,13 +317,13 @@ export function HomeHero() {
             </motion.div>
 
             {/* Subtle Vertical Divider */}
-            <div className="hidden h-12 w-[1px] bg-white/10 sm:block"></div>
+            <div className="hidden h-12 w-[1px] bg-zinc-300 dark:bg-white/10 sm:block"></div>
 
             <motion.div
               whileHover={{ scale: 1.02 }}
               className="group flex flex-col transition-all"
             >
-              <p className="text-3xl font-light tracking-tight text-white">
+              <p className="text-3xl font-light tracking-tight text-zinc-900 dark:text-white">
                 12<span className="text-zinc-600 transition-colors group-hover:text-zinc-400">y</span>
               </p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-zinc-500">

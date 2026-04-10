@@ -72,7 +72,7 @@ function ProjectColumn({ items }: { items: StickyProject[] }) {
           <img
             src={item.src}
             alt={item.alt}
-            className="h-72 w-full rounded-xl border border-white/10 object-cover transition-all duration-300 hover:scale-[1.01]"
+            className="h-72 w-full rounded-xl border border-zinc-200 object-cover transition-all duration-300 hover:scale-[1.01] dark:border-white/10"
           />
         </figure>
       ))}
@@ -82,13 +82,13 @@ function ProjectColumn({ items }: { items: StickyProject[] }) {
 
 export function StickyScroll() {
   return (
-    <section className="relative z-10 border-t border-white/[0.06] bg-slate-950 px-3 py-16 md:px-6 md:py-24">
+    <section className="relative z-10 border-t border-zinc-200 bg-zinc-100 px-3 py-16 dark:border-white/[0.06] dark:bg-slate-950 md:px-6 md:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center md:mb-14">
           <p className="mb-3 text-xs uppercase tracking-[0.22em] text-indigo-300">
             Deep dive
           </p>
-          <h2 className="bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent md:text-4xl">
+          <h2 className="bg-gradient-to-b from-zinc-900 to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent dark:from-white dark:to-zinc-500 md:text-4xl">
             Real project momentum
           </h2>
         </div>
@@ -101,21 +101,21 @@ export function StickyScroll() {
           <div className="lg:col-span-4">
             <div className="sticky top-20 h-[80vh]">
               <div className="grid h-full grid-rows-3 gap-2">
-                <article className="row-span-3 flex h-full flex-col justify-center rounded-xl border border-white/10 bg-zinc-950/85 p-7 text-left backdrop-blur-sm">
-                  <span className="mb-3 inline-flex w-fit rounded-full border border-indigo-300/25 bg-indigo-400/10 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-indigo-200">
+                <article className="row-span-3 flex h-full flex-col justify-center rounded-xl border border-zinc-200 bg-white/90 p-7 text-left backdrop-blur-sm dark:border-white/10 dark:bg-zinc-950/85">
+                  <span className="mb-3 inline-flex w-fit rounded-full border border-indigo-300/35 bg-indigo-400/10 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-indigo-600 dark:text-indigo-200">
                     Middle narrative
                   </span>
-                  <h3 className="text-2xl font-semibold leading-tight text-white md:text-3xl">
+                  <h3 className="text-2xl font-semibold leading-tight text-zinc-900 dark:text-white md:text-3xl">
                     Strategy in the center.
                     <br />
                     Execution on both sides.
                   </h3>
-                  <p className="mt-4 max-w-md text-sm leading-relaxed text-zinc-400 md:text-base">
+                  <p className="mt-4 max-w-md text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-base">
                     This sticky block keeps the core message visible while your
                     portfolio streams around it. Perfect for showing your agency
                     process, outcomes, and confidence in one focused moment.
                   </p>
-                  <button className="group mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-5 py-2.5 text-sm text-zinc-200 transition hover:bg-white/[0.08]">
+                  <button className="group mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-5 py-2.5 text-sm text-zinc-800 transition hover:bg-zinc-200 dark:border-white/15 dark:bg-white/[0.03] dark:text-zinc-200 dark:hover:bg-white/[0.08]">
                     Explore projects
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </button>

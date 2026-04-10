@@ -88,7 +88,7 @@ export function ProjectShowcase() {
       onMouseMove={handleMouseMove}
       className="relative mx-auto w-full px-3 py-8 md:px-6 md:py-10"
     >
-      <h3 className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
+      <h3 className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
         Workflow snapshots
       </h3>
 
@@ -137,19 +137,19 @@ export function ProjectShowcase() {
               setIsVisible(false);
             }}
           >
-            <div className="relative border-t border-white/30 py-4 transition-all duration-300 ease-out md:py-5">
+            <div className="relative border-t border-zinc-200 py-4 transition-all duration-300 ease-out dark:border-white/20 md:py-5">
               <div
-                className={`absolute inset-0 -mx-3 rounded-lg bg-white/[0.04] px-3 transition-all duration-300 ease-out md:-mx-4 md:px-4 ${hoveredIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-0"
+                className={`absolute inset-0 -mx-3 rounded-lg bg-zinc-100 px-3 transition-all duration-300 ease-out dark:bg-white/[0.04] md:-mx-4 md:px-4 ${hoveredIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-0"
                   }`}
               />
               <div className="relative flex items-start justify-between gap-4">
                 <div className="min-w-0 flex-1">
                   <div className="inline-flex items-center gap-2">
-                    <h4 className="text-base font-medium tracking-tight text-zinc-100 md:text-lg">
+                    <h4 className="text-base font-medium tracking-tight text-zinc-900 dark:text-zinc-100 md:text-lg">
                       <span className="relative">
                         {project.title}
                         <span
-                          className={`absolute -bottom-0.5 left-0 h-px bg-zinc-100 transition-all duration-300 ease-out ${hoveredIndex === index ? "w-full" : "w-0"
+                          className={`absolute -bottom-0.5 left-0 h-px bg-zinc-900 transition-all duration-300 ease-out dark:bg-zinc-100 ${hoveredIndex === index ? "w-full" : "w-0"
                             }`}
                         />
                       </span>
@@ -162,14 +162,14 @@ export function ProjectShowcase() {
                     />
                   </div>
                   <p
-                    className={`mt-1 text-sm leading-relaxed transition-all duration-300 ease-out ${hoveredIndex === index ? "text-zinc-300" : "text-zinc-500"
+                    className={`mt-1 text-sm leading-relaxed transition-all duration-300 ease-out ${hoveredIndex === index ? "text-zinc-700 dark:text-zinc-300" : "text-zinc-500"
                       }`}
                   >
                     {project.description}
                   </p>
                 </div>
                 <span
-                  className={`text-xs font-mono tabular-nums transition-all duration-300 ease-out ${hoveredIndex === index ? "text-zinc-300" : "text-zinc-500"
+                  className={`text-xs font-mono tabular-nums transition-all duration-300 ease-out ${hoveredIndex === index ? "text-zinc-700 dark:text-zinc-300" : "text-zinc-500"
                     }`}
                 >
                   {project.year}
@@ -178,7 +178,7 @@ export function ProjectShowcase() {
             </div>
           </a>
         ))}
-        <div className="border-t border-white/10" />
+        <div className="border-t border-zinc-200 dark:border-white/10" />
       </div>
     </section>
   );

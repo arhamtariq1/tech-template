@@ -11,6 +11,7 @@ export function LenisProvider() {
       gestureOrientation: "vertical",
       wheelMultiplier: 0.95,
       touchMultiplier: 1.15,
+      anchors: true,
     });
 
     let rafId = 0;

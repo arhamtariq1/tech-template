@@ -34,33 +34,33 @@ export function PricingBlocks({ tiers }: PricingBlocksProps) {
               className={cn(
                 "relative w-full rounded-3xl border px-7 py-9 text-left shadow-xl transition-transform hover:scale-[1.015]",
                 isHighlighted
-                  ? "z-20 border-indigo-300/40 bg-gradient-to-b from-indigo-500/25 via-indigo-500/10 to-zinc-950 text-white ring-1 ring-indigo-300/25 backdrop-blur-md lg:w-[25rem]"
-                  : "z-10 border-white/[0.1] bg-zinc-950/80 text-zinc-100 backdrop-blur-sm lg:w-[22rem]"
+                  ? "z-20 border-indigo-300/50 bg-gradient-to-b from-indigo-100 via-white to-indigo-50 text-zinc-900 ring-1 ring-indigo-300/30 backdrop-blur-md dark:border-indigo-300/40 dark:from-indigo-500/25 dark:via-indigo-500/10 dark:to-zinc-950 dark:text-white dark:ring-indigo-300/25 lg:w-[25rem]"
+                  : "z-10 border-zinc-200 bg-white text-zinc-900 backdrop-blur-sm dark:border-white/[0.1] dark:bg-zinc-950/80 dark:text-zinc-100 lg:w-[22rem]"
               )}
             >
               {isHighlighted ? (
                 <motion.div
                   animate={{ y: [8, 2, 8] }}
                   transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
-                  className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full border border-indigo-300/35 bg-indigo-400/20 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-indigo-100"
+                  className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full border border-indigo-300/50 bg-indigo-100 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-indigo-700 dark:border-indigo-300/35 dark:bg-indigo-400/20 dark:text-indigo-100"
                 >
                   Most Popular
                 </motion.div>
               ) : null}
 
-              <p className={cn("text-sm font-semibold uppercase tracking-[0.2em]", isHighlighted ? "text-indigo-100" : "text-indigo-300")}>
+              <p className={cn("text-sm font-semibold uppercase tracking-[0.2em]", isHighlighted ? "text-indigo-700 dark:text-indigo-100" : "text-indigo-600 dark:text-indigo-300")}>
                 {tier.name}
               </p>
-              <p className={cn("mt-3 text-4xl font-bold", isHighlighted ? "text-white" : "text-zinc-100")}>
+              <p className={cn("mt-3 text-4xl font-bold", isHighlighted ? "text-zinc-900 dark:text-white" : "text-zinc-900 dark:text-zinc-100")}>
                 {tier.price}
               </p>
-              <p className={cn("mt-2 text-sm leading-relaxed", isHighlighted ? "text-indigo-100/90" : "text-zinc-400")}>
+              <p className={cn("mt-2 text-sm leading-relaxed", isHighlighted ? "text-indigo-700/90 dark:text-indigo-100/90" : "text-zinc-600 dark:text-zinc-400")}>
                 {tier.blurb}
               </p>
 
               <ul className="mt-6 space-y-2.5">
                 {tier.features.map((feature) => (
-                  <li key={feature} className={cn("flex items-start gap-2.5 text-sm", isHighlighted ? "text-indigo-50" : "text-zinc-300")}>
+                  <li key={feature} className={cn("flex items-start gap-2.5 text-sm", isHighlighted ? "text-zinc-800 dark:text-indigo-50" : "text-zinc-700 dark:text-zinc-300")}>
                     <Check className={cn("mt-0.5 h-4 w-4 shrink-0", isHighlighted ? "text-emerald-300" : "text-emerald-400/90")} />
                     <span>{feature}</span>
                   </li>
@@ -71,8 +71,8 @@ export function PricingBlocks({ tiers }: PricingBlocksProps) {
                 className={cn(
                   "mt-7 w-full rounded-full py-2.5 text-sm font-semibold transition",
                   isHighlighted
-                    ? "bg-white text-zinc-900 hover:bg-zinc-200"
-                    : "bg-white/10 text-white hover:bg-white/15"
+                    ? "bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                    : "bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
                 )}
               >
                 {tier.ctaLabel ?? "Book intro"}
