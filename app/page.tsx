@@ -12,6 +12,7 @@ import {
   PenTool,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { StickyScroll } from '@/components/ui/sticky-scroll';
 import { HomeHero } from '@/components/landing/home-hero';
 import {
   FaqSection,
@@ -29,7 +30,7 @@ const services = [
   {
     id: '01',
     title: 'Web Development',
-    desc: 'Bespoke sites that merge innovation with craft — fast, accessible, and built to convert.',
+    desc: 'Bespoke sites that merge innovation with craft — fast, accessible, and built to convert. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
     image:
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80',
     icon: Layers3,
@@ -38,7 +39,7 @@ const services = [
   {
     id: '02',
     title: 'Marketing',
-    desc: 'Funnels, content, and campaigns tuned to lift qualified leads and trim acquisition cost.',
+    desc: 'Funnels, content, and campaigns tuned to lift qualified leads and trim acquisition cost. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
     image:
       'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1400&q=80',
     icon: Megaphone,
@@ -47,7 +48,7 @@ const services = [
   {
     id: '03',
     title: 'Brand Identity',
-    desc: 'Voice, visuals, and systems so every touchpoint feels cohesive, premium, and scalable.',
+    desc: 'Voice, visuals, and systems so every touchpoint feels cohesive, premium, and scalable. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry  ',
     image:
       'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1400&q=80',
     icon: PenTool,
@@ -56,7 +57,7 @@ const services = [
   {
     id: '04',
     title: 'Software Development',
-    desc: 'Custom platforms from architecture to deployment — maintainable, secure, and built to scale.',
+    desc: 'Custom platforms from architecture to deployment — maintainable, secure, and built to scale. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
     image:
       'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=80',
     icon: Code2,
@@ -142,11 +143,11 @@ function ServicesSection() {
                 <div className="relative grid min-h-0 min-w-0 flex-1 grid-cols-1 items-stretch gap-0 lg:grid-cols-[1.05fr_1fr]">
                   <div className="flex min-h-0 min-w-0 flex-col justify-between gap-3 overflow-hidden p-5 md:gap-4 md:p-8 lg:p-10">
                     <div className="min-w-0">
-                      <div className="mb-3 flex items-center justify-between gap-3 md:mb-5">
-                        <span className="shrink-0 rounded-full border border-white/15 bg-white/[0.05] px-3 py-1 text-[11px] tracking-wider text-zinc-300 md:px-4 md:py-1.5">
-                          Service {service.id}
+                      <div className="mb-1 flex items-center justify-between gap-3 md:mb-2">
+                        <span className="shrink-0 px-3 py-1 text-[11px] tracking-wider text-zinc-300 md:px-4 md:py-1.5">
+                          {/* Service {service.id} */}
                         </span>
-                        <span className="select-none text-[3.25rem] font-bold leading-none text-white/[0.04] sm:text-[4.5rem] md:text-[6rem]">
+                        <span className="select-none text-[3rem] font-bold leading-none text-white/[0.04] sm:text-[4.5rem] md:text-[4rem]">
                           {service.id}
                         </span>
                       </div>
@@ -158,7 +159,7 @@ function ServicesSection() {
                       <h3 className="mb-1.5 text-lg font-semibold leading-tight text-white md:mb-2 md:text-3xl lg:text-4xl">
                         {service.title}
                       </h3>
-                      <p className="max-w-md text-[13px] leading-snug text-zinc-400 md:text-[15px] md:leading-relaxed">
+                      <p className="max-w-md text-[12px] leading-snug text-zinc-400 md:text-[15px] md:leading-relaxed">
                         {service.desc}
                       </p>
                     </div>
@@ -182,7 +183,7 @@ function ServicesSection() {
                           alt={service.title}
                           width={1400}
                           height={900}
-                          className="h-full min-h-[12rem] w-full object-cover"
+                          className="h-full min-h-[9rem] w-full object-cover"
                         />
                       </div>
                     </div>
@@ -205,11 +206,12 @@ export default function Home() {
       <ServicesSection />
 
       <ProcessSection />
+      <StickyScroll />
       <WorkShowcaseSection />
-      <TestimonialsSection />
       <PricingSection />
-      <NewsletterCtaSection />
+      <TestimonialsSection />
       <FaqSection />
+      <NewsletterCtaSection />
       <SiteFooter />
     </>
   );

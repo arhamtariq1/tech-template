@@ -1,16 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import {
   ArrowUpRight,
-  BarChart3,
   Compass,
   Menu,
   Play,
-  ShieldCheck,
   Sparkles,
 } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -48,17 +46,115 @@ const fadeUp = {
   },
 };
 
+const shuffle = <T,>(array: T[]) => {
+  let currentIndex = array.length;
+  let randomIndex: number;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+};
+
+const squareData = [
+  {
+    id: 1,
+    src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    id: 2,
+    src: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    id: 3,
+    src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    id: 4,
+    src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    id: 5,
+    src: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    id: 6,
+    src: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    id: 7,
+    src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    id: 8,
+    src: 'https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    id: 9,
+    src: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80',
+  },
+] as const;
+
+const generateSquares = () => {
+  return shuffle([...squareData]).map((sq) => (
+    <motion.div
+      key={sq.id}
+      layout
+      transition={{ duration: 1.5, type: 'spring' }}
+      className="h-full w-full rounded-md bg-zinc-900/30"
+      style={{
+        backgroundImage: `url(${sq.src})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    />
+  ));
+};
+
+const ShuffleGrid = () => {
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [squares, setSquares] = useState(generateSquares());
+
+  useEffect(() => {
+    const shuffleSquares = () => {
+      setSquares(generateSquares());
+      timeoutRef.current = setTimeout(shuffleSquares, 3000);
+    };
+
+    shuffleSquares();
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div className="grid h-[400px] grid-cols-3 grid-rows-3 gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-1 shadow-2xl shadow-white/5">
+      {squares}
+    </div>
+  );
+};
+
 export function HomeHero() {
   return (
     <div id="top" className="relative min-h-screen overflow-x-hidden bg-black text-white">
       <div className="pointer-events-none absolute inset-0 bg-grid-white/[0.02]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.28),transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_55%)]" />
       <Spotlight className="-top-32 left-0 md:left-52 md:-top-24" fill="white" />
       <motion.div
         aria-hidden
         animate={{ x: [0, -18, 0], y: [0, 12, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        className="pointer-events-none absolute -left-20 top-32 h-72 w-72 rounded-full bg-indigo-500/20 blur-[90px]"
+        className="pointer-events-none absolute -left-20 top-32 h-72 w-72 rounded-full bg-white/8 blur-[90px]"
       />
       <motion.div
         aria-hidden
@@ -68,20 +164,18 @@ export function HomeHero() {
       />
 
       <header className="fixed left-0 right-0 top-0 z-50">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-2 py-6">
           <motion.a
             href="#top"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/35 px-4 py-2 backdrop-blur-xl transition-colors hover:border-white/25 hover:bg-black/45"
+            className="inline-flex py-2 backdrop-blur-xl transition-colors hover:border-white/25 hover:bg-black/45"
             aria-label="Noctra Studio — back to top"
           >
-            <div className="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-br from-indigo-400 to-fuchsia-400 text-black">
-              <Compass className="h-3.5 w-3.5" />
-            </div>
-            <p className="text-xs font-medium tracking-[0.16em] text-zinc-100 uppercase">
-              Noctra Studio
+
+            <p className="text-sm font-medium tracking-[0.12em] text-zinc-100 uppercase">
+              Noctra Studio.
             </p>
           </motion.a>
 
@@ -97,7 +191,7 @@ export function HomeHero() {
                   <NavigationMenuItem key={item}>
                     <NavigationMenuLink
                       href={href}
-                      className="group relative block rounded-full px-5 py-2 text-xs tracking-wide text-zinc-300 transition-colors hover:text-white"
+                      className="group/navitem relative block rounded-full px-5 py-2 text-xs tracking-wide text-zinc-300 transition-colors hover:text-white"
                     >
                       <span>{item}</span>
                       {index === 0 && (
@@ -106,7 +200,7 @@ export function HomeHero() {
                           className="absolute inset-0 -z-10 rounded-full bg-white/10"
                         />
                       )}
-                      <span className="absolute inset-x-4 -bottom-0.5 h-px scale-x-0 bg-gradient-to-r from-transparent via-indigo-300 to-transparent transition-transform duration-300 group-hover:scale-x-100" />
+                      <span className="absolute inset-x-4 -bottom-0.5 h-px scale-x-0 bg-gradient-to-r from-transparent via-indigo-300 to-transparent transition-transform duration-300 group-hover/navitem:scale-x-100" />
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
@@ -122,7 +216,7 @@ export function HomeHero() {
           >
             <Button
               asChild
-              className="hidden h-10 rounded-full bg-white text-black hover:bg-zinc-200 md:inline-flex"
+              className="hidden h-9 rounded-full bg-white text-black hover:bg-zinc-200 md:inline-flex"
             >
               <a href="#contact">Let&apos;s Talk</a>
             </Button>
@@ -137,73 +231,102 @@ export function HomeHero() {
         </div>
       </header>
 
-      <section className="relative z-10 mx-auto grid min-h-screen w-full max-w-7xl items-center gap-12 px-6 pb-20 pt-28 lg:grid-cols-2 lg:pb-28 lg:pt-36">
+      <section className="relative z-10 mx-auto grid min-h-screen w-full max-w-7xl items-center gap-24 pb-20 pt-28 lg:grid-cols-2 lg:pb-28 lg:pt-36">
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.div
             variants={fadeUp}
-            className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[10px] uppercase tracking-[0.18em] text-zinc-200"
+            className="mb-3 inline-flex items-center gap-2 py-2 text-[10px] uppercase tracking-[0.18em] text-zinc-200"
           >
-            <Sparkles className="h-4 w-4 text-indigo-300" />
             Premium Growth Agency
           </motion.div>
 
           <motion.h1
             variants={fadeUp}
-            className="max-w-2xl bg-gradient-to-b from-white via-zinc-100 to-zinc-500 bg-clip-text text-4xl font-semibold leading-[1.05] text-transparent sm:text-2xl md:text-3xl xl:text-4xl"
+            className="max-w-2xl bg-gradient-to-b from-white via-zinc-100 to-zinc-500 bg-clip-text text-xl font-semibold leading-[1.05] text-transparent sm:text-2xl md:text-3xl xl:text-5xl"
           >
-            We design dark, bold digital experiences that convert.
+            We design dark, bold digital experiences.
           </motion.h1>
 
           <motion.p
             variants={fadeUp}
-            className="mt-7 max-w-xl text-xs leading-relaxed text-zinc-300 md:text-base"
+            className="mt-7 max-w-xl text-[11px] leading-relaxed text-zinc-300 md:text-base"
           >
             Launch strategy, branding, and high-performance websites with a
-            modern aesthetic. Built for teams who want clean visuals and clear
-            business impact.
+            modern aesthetic.
           </motion.p>
 
+          {/* Buttons Section */}
           <motion.div
             variants={fadeUp}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            className="mt-10 flex flex-wrap items-center gap-6"
           >
-            <Button className="group h-12 bg-indigo-500 px-6 text-white hover:bg-indigo-400">
-              Start Project
-              <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            {/* Minimal & High-Contrast Primary Button */}
+            <Button className="group h-12 rounded-full bg-white px-8 text-black transition-all hover:bg-zinc-200 hover:scale-[1.02]">
+              <span className="flex items-center text-sm font-semibold">
+                Start Project
+                <ArrowUpRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </span>
             </Button>
+
+            {/* Sleek Ghost Secondary Button */}
             <Button
-              variant="outline"
-              className="h-12 border-white/20 bg-white/5 px-6 text-zinc-100 hover:bg-white/10"
+              variant="ghost"
+              className="group relative h-12 px-2 text-zinc-400 transition-colors hover:bg-transparent hover:text-white"
             >
-              <Play className="mr-2 h-4 w-4" />
-              Watch Reel
+              <Play className="mr-2 h-4 w-4 fill-transparent transition-colors group-hover:fill-white" />
+              <span className="relative text-sm font-medium">
+                Watch Reel
+                {/* Animated underline effect */}
+                <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+              </span>
             </Button>
           </motion.div>
 
+          {/* Stats Section - Boxless & Typography Driven */}
           <motion.div
             variants={fadeUp}
-            className="mt-10 grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-3"
+            className="mt-10 flex max-w-xl flex-wrap items-center gap-x-10 gap-y-8"
           >
             <motion.div
-              whileHover={{ y: -6, borderColor: 'rgba(255,255,255,0.22)' }}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4"
+              whileHover={{ scale: 1.02 }}
+              className="group flex flex-col transition-all"
             >
-              <p className="text-2xl font-semibold text-white">150+</p>
-              <p className="text-xs text-zinc-400">Projects delivered</p>
+              <p className="text-3xl font-light tracking-tight text-white">
+                150 <span className="text-zinc-600 transition-colors group-hover:text-zinc-400">+</span>
+              </p>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                Projects
+              </p>
             </motion.div>
+
+            {/* Subtle Vertical Divider */}
+            <div className="hidden h-12 w-[1px] bg-white/10 sm:block"></div>
+
             <motion.div
-              whileHover={{ y: -6, borderColor: 'rgba(255,255,255,0.22)' }}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4"
+              whileHover={{ scale: 1.02 }}
+              className="group flex flex-col transition-all"
             >
-              <p className="text-2xl font-semibold text-white">98%</p>
-              <p className="text-xs text-zinc-400">Client retention</p>
+              <p className="text-3xl font-light tracking-tight text-white">
+                98<span className="text-zinc-600 transition-colors group-hover:text-zinc-400">%</span>
+              </p>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                Retention
+              </p>
             </motion.div>
+
+            {/* Subtle Vertical Divider */}
+            <div className="hidden h-12 w-[1px] bg-white/10 sm:block"></div>
+
             <motion.div
-              whileHover={{ y: -6, borderColor: 'rgba(255,255,255,0.22)' }}
-              className="col-span-2 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4 sm:col-span-1"
+              whileHover={{ scale: 1.02 }}
+              className="group flex flex-col transition-all"
             >
-              <p className="text-2xl font-semibold text-white">12y</p>
-              <p className="text-xs text-zinc-400">Industry expertise</p>
+              <p className="text-3xl font-light tracking-tight text-white">
+                12<span className="text-zinc-600 transition-colors group-hover:text-zinc-400">y</span>
+              </p>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                Expertise
+              </p>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -214,71 +337,7 @@ export function HomeHero() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="relative mx-auto w-full max-w-xl"
         >
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{
-              duration: 4.8,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="absolute z-10 -left-8 -top-8 rounded-2xl border border-indigo-300/30 bg-indigo-300/10 px-5 py-3 backdrop-blur-md"
-          >
-            <p className="text-2xl font-semibold text-white">+42%</p>
-            <p className="text-xs text-zinc-300">Average growth in 90 days</p>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{
-              duration: 5.2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="absolute -bottom-8 -right-6 rounded-2xl border border-white/15 bg-zinc-900/70 px-5 py-3 backdrop-blur-md"
-          >
-            <div className="flex items-center gap-2 text-zinc-100">
-              <BarChart3 className="h-4 w-4 text-emerald-300" />
-              <p className="text-sm font-medium">Data-first strategy</p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ y: -6, rotate: -0.5 }}
-            transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-            className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-2 shadow-2xl shadow-indigo-500/10"
-          >
-            <motion.div
-              animate={{ scale: [1, 1.02, 1] }}
-              transition={{
-                duration: 12,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80"
-                alt="Creative team discussing campaign strategy"
-                width={1100}
-                height={900}
-                className="h-[25rem] w-full rounded-[1.5rem] object-cover"
-              />
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.65 }}
-            className="mt-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4"
-          >
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="mt-1 h-5 w-5 text-indigo-300" />
-              <p className="text-[11px] leading-relaxed text-zinc-300">
-                Trusted by fast-growing startups and enterprise teams for
-                conversion-focused web design and brand systems.
-              </p>
-            </div>
-          </motion.div>
+          <ShuffleGrid />
         </motion.div>
       </section>
     </div>

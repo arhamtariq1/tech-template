@@ -1,17 +1,16 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
   ArrowRight,
   Check,
-  Cpu,
+  ChevronLeft,
+  ChevronRight,
   HelpCircle,
-  LineChart,
   MessageCircle,
-  Orbit,
   Quote,
-  Sparkles,
 } from 'lucide-react';
 
 import {
@@ -30,6 +29,8 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { PricingBlocks } from '@/components/ui/pricing-blocks';
+import { ProjectShowcase } from '@/components/ui/project-showcase';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 
@@ -144,79 +145,28 @@ export function FaqSection() {
   );
 }
 
-const processSteps = [
-  {
-    title: 'Signal',
-    desc: 'We map goals, constraints, and the one metric that must move.',
-    icon: LineChart,
-    className: 'lg:col-span-2',
-  },
-  {
-    title: 'Systems',
-    desc: 'Design tokens, motion rules, and a component spine you can scale.',
-    icon: Orbit,
-    className: 'lg:col-span-1',
-  },
-  {
-    title: 'Velocity',
-    desc: 'Weekly slices, async reviews, and a launch runway without thrash.',
-    icon: Cpu,
-    className: 'lg:col-span-1',
-  },
-  {
-    title: 'Proof',
-    desc: 'Analytics, heatmaps, and iteration loops until the graph smiles.',
-    icon: Sparkles,
-    className: 'lg:col-span-2',
-  },
-];
-
 export function ProcessSection() {
   return (
     <section id="process" className="relative z-10 scroll-mt-24 bg-black px-6 py-20 md:py-28">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.12),transparent)]" />
       <div className="mx-auto max-w-7xl">
         <motion.div {...fade} className="mx-auto max-w-2xl text-center">
           <p className="mb-3 text-xs uppercase tracking-[0.22em] text-indigo-300">
             How we work
           </p>
           <h2 className="bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent md:text-4xl">
-            A rhythm built for momentum
+            Agency process, but cinematic
           </h2>
-          <p className="mt-4 text-sm text-zinc-400 md:text-base">
-            Not a waterfall deck — a tight loop of clarity, craft, and measurable
-            outcomes.
-          </p>
+          {/* <p className="mt-4 text-sm text-zinc-400 md:text-base">
+            We move from strategy to shipped experience in tight loops. Hover each
+            lane to preview the kind of work we deliver for modern brands.
+          </p> */}
         </motion.div>
-
-        <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {processSteps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.5, delay: i * 0.06 }}
-                className={cn(
-                  'group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-zinc-900/90 to-zinc-950 p-6 md:p-8',
-                  step.className
-                )}
-              >
-                <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-indigo-500/10 blur-3xl transition-opacity group-hover:opacity-100" />
-                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04]">
-                  <Icon className="h-5 w-5 text-indigo-200" />
-                </div>
-                <h3 className="text-lg font-semibold text-white md:text-xl">
-                  {step.title}
-                </h3>
-                <p className="mt-2 max-w-md text-sm leading-relaxed text-zinc-400">
-                  {step.desc}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
+        <motion.div {...fade} className="mt-10">
+          <div className=" px-2 py-2  md:px-4">
+            <ProjectShowcase />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -255,7 +205,7 @@ export function WorkShowcaseSection() {
             <h2 className="bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-3xl font-semibold text-transparent md:text-4xl">
               Interfaces that feel expensive
             </h2>
-            <p className="mt-4 text-sm text-zinc-400 md:text-base">
+            <p className="mt-4 text-xs text-zinc-400 md:text-sm">
               A snapshot of launches — from storefronts to internal tools — each
               tuned for clarity and conversion.
             </p>
@@ -269,7 +219,7 @@ export function WorkShowcaseSection() {
           </Button>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
           {projects.map((p, i) => (
             <motion.div
               key={p.title}
@@ -323,6 +273,21 @@ const quotes = [
 ];
 
 export function TestimonialsSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const total = quotes.length;
+
+  const goTo = (index: number) => {
+    if (index < 0) {
+      setActiveIndex(total - 1);
+      return;
+    }
+    if (index >= total) {
+      setActiveIndex(0);
+      return;
+    }
+    setActiveIndex(index);
+  };
+
   return (
     <section className="relative z-10 bg-black px-6 py-20 md:py-28">
       <div className="mx-auto max-w-7xl">
@@ -335,29 +300,89 @@ export function TestimonialsSection() {
           </h2>
         </motion.div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {quotes.map((q, i) => (
+        <div className="mt-8">
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-zinc-950/40 p-3 md:p-4">
             <motion.div
-              key={q.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.12}
+              onDragEnd={(_, info) => {
+                if (info.offset.x < -70) goTo(activeIndex + 1);
+                if (info.offset.x > 70) goTo(activeIndex - 1);
+              }}
+              animate={{ x: `-${activeIndex * 100}%` }}
+              transition={{ type: 'spring', stiffness: 170, damping: 24 }}
+              className="flex"
             >
-              <Card className="h-full border-white/[0.08] bg-zinc-950/80 text-zinc-100 shadow-none backdrop-blur-sm">
-                <CardHeader className="space-y-3">
-                  <Quote className="h-8 w-8 text-indigo-400/60" />
-                  <CardDescription className="text-[15px] leading-relaxed text-zinc-400">
-                    “{q.text}”
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter className="flex flex-col items-start border-t border-white/[0.06] pt-4">
-                  <p className="text-sm font-medium text-white">{q.name}</p>
-                  <p className="text-xs text-zinc-500">{q.role}</p>
-                </CardFooter>
-              </Card>
+              {quotes.map((q, i) => (
+                <div key={q.name} className="w-full flex-none px-1">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.35 }}
+                    animate={{
+                      scale: i === activeIndex ? 1 : 0.97,
+                      opacity: i === activeIndex ? 1 : 0.7,
+                    }}
+                    transition={{ duration: 0.35 }}
+                  >
+                    <Card className="h-full border-white/[0.08] bg-zinc-950/90 text-zinc-100 shadow-none backdrop-blur-sm">
+                      <CardHeader className="space-y-3 md:space-y-4">
+                        <Quote className="h-8 w-8 text-indigo-400/70" />
+                        <CardDescription className="text-[15px] leading-relaxed text-zinc-300 md:text-base">
+                          “{q.text}”
+                        </CardDescription>
+                      </CardHeader>
+                      <CardFooter className="flex items-center justify-between border-t border-white/[0.06] pt-4">
+                        <div className="flex flex-col items-start">
+                          <p className="text-sm font-medium text-white md:text-base">{q.name}</p>
+                          <p className="text-xs text-zinc-500">{q.role}</p>
+                        </div>
+                        <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] tracking-wide text-zinc-400">
+                          0{i + 1}
+                        </span>
+                      </CardFooter>
+                    </Card>
+                  </motion.div>
+                </div>
+              ))}
             </motion.div>
-          ))}
+          </div>
+
+          <div className="mt-5 flex items-center justify-center gap-3">
+            <Button
+              type="button"
+              size="icon"
+              variant="outline"
+              className="h-9 w-9 rounded-full border-white/15 bg-white/[0.03] text-zinc-200 hover:bg-white/[0.08]"
+              onClick={() => goTo(activeIndex - 1)}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+
+            <div className="flex items-center gap-2">
+              {quotes.map((q, i) => (
+                <button
+                  key={q.name}
+                  type="button"
+                  onClick={() => goTo(i)}
+                  className={`h-1.5 rounded-full transition-all ${i === activeIndex ? 'w-7 bg-indigo-400' : 'w-2 bg-zinc-700 hover:bg-zinc-500'
+                    }`}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <Button
+              type="button"
+              size="icon"
+              variant="outline"
+              className="h-9 w-9 rounded-full border-white/15 bg-white/[0.03] text-zinc-200 hover:bg-white/[0.08]"
+              onClick={() => goTo(activeIndex + 1)}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </div>
     </section>
@@ -371,6 +396,7 @@ const tiers = [
     blurb: 'Focused landing or refresh in a tight window.',
     features: ['2-week delivery block', 'Core components + motion pass', 'Analytics hookup'],
     highlight: false,
+    ctaLabel: 'Start sprint',
   },
   {
     name: 'Studio',
@@ -378,6 +404,7 @@ const tiers = [
     blurb: 'Full narrative site with CMS and design system seed.',
     features: ['Multi-section build', 'Content modeling', 'Performance budget'],
     highlight: true,
+    ctaLabel: 'Go studio',
   },
   {
     name: 'Embedded',
@@ -385,6 +412,7 @@ const tiers = [
     blurb: 'Ongoing product surface + growth experiments.',
     features: ['Monthly design/dev pod', 'Roadmap ownership', 'CRO cadence'],
     highlight: false,
+    ctaLabel: 'Contact us',
   },
 ];
 
@@ -404,50 +432,8 @@ export function PricingSection() {
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {tiers.map((tier, i) => (
-            <motion.div
-              key={tier.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
-            >
-              <Card
-                className={cn(
-                  'h-full border-white/[0.08] bg-zinc-950/90 text-zinc-100 shadow-xl shadow-black/40',
-                  tier.highlight &&
-                    'border-indigo-400/35 ring-1 ring-indigo-400/25'
-                )}
-              >
-                <CardHeader>
-                  <CardTitle className="text-xl text-white">{tier.name}</CardTitle>
-                  <CardDescription className="text-zinc-400">{tier.blurb}</CardDescription>
-                  <p className="pt-2 text-3xl font-semibold text-white">{tier.price}</p>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  {tier.features.map((f) => (
-                    <div key={f} className="flex items-start gap-2 text-sm text-zinc-300">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400/90" />
-                      <span>{f}</span>
-                    </div>
-                  ))}
-                </CardContent>
-                <CardFooter>
-                  <Button
-                    className={cn(
-                      'w-full rounded-full',
-                      tier.highlight
-                        ? 'bg-indigo-500 text-white hover:bg-indigo-400'
-                        : 'bg-white/10 text-white hover:bg-white/15'
-                    )}
-                  >
-                    Book intro
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
+        <div className="mt-14">
+          <PricingBlocks tiers={tiers} />
         </div>
       </div>
     </section>
