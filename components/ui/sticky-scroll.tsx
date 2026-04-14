@@ -101,8 +101,8 @@ export function StickyScroll() {
           <div className="lg:col-span-4">
             <div className="sticky top-20 h-[80vh]">
               <div className="grid h-full grid-rows-3 gap-2">
-                <article className="row-span-3 flex h-full flex-col justify-center rounded-xl border border-zinc-200 bg-white/90 p-7 text-left backdrop-blur-sm dark:border-white/10 dark:bg-zinc-950/85">
-                  <span className="mb-3 inline-flex w-fit rounded-full border border-indigo-300/35 bg-indigo-400/10 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-indigo-600 dark:text-indigo-200">
+                <article className="row-span-3 flex h-full flex-col justify-center rounded-xl border border-zinc-200 bg-white/90 p-7 text-left backdrop-blur-sm dark:border-white/5 dark:bg-zinc-900/95 dark:backdrop-blur-none">
+                  <span className="mb-3 inline-flex w-fit rounded-full border border-indigo-300/35 bg-indigo-400/10 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-indigo-600 dark:border-indigo-300/30 dark:bg-indigo-400/15 dark:text-indigo-100">
                     Middle narrative
                   </span>
                   <h3 className="text-2xl font-semibold leading-tight text-zinc-900 dark:text-white md:text-3xl">
@@ -110,12 +110,12 @@ export function StickyScroll() {
                     <br />
                     Execution on both sides.
                   </h3>
-                  <p className="mt-4 max-w-md text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-base">
+                  <p className="mt-4 max-w-md text-sm leading-relaxed text-zinc-600 dark:text-zinc-300 md:text-base">
                     This sticky block keeps the core message visible while your
                     portfolio streams around it. Perfect for showing your agency
                     process, outcomes, and confidence in one focused moment.
                   </p>
-                  <button className="group mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-5 py-2.5 text-sm text-zinc-800 transition hover:bg-zinc-200 dark:border-white/15 dark:bg-white/[0.03] dark:text-zinc-200 dark:hover:bg-white/[0.08]">
+                  <button className="group mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-5 py-2.5 text-sm text-zinc-800 transition hover:bg-zinc-200 dark:border-white/20 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700">
                     Explore projects
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </button>

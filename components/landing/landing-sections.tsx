@@ -446,20 +446,20 @@ export function NewsletterCtaSection() {
       <div className="mx-auto max-w-4xl">
         <motion.div
           {...fade}
-          className="relative overflow-hidden rounded-[2rem] border border-zinc-200 bg-gradient-to-br from-indigo-100/70 via-white to-fuchsia-100/50 p-8 dark:border-white/[0.1] dark:from-indigo-500/15 dark:via-zinc-950 dark:to-fuchsia-500/10 md:p-12"
+          className="relative overflow-hidden rounded-[2rem] border border-zinc-200 bg-gradient-to-br from-indigo-100/70 via-white to-fuchsia-100/50 p-8 dark:border-white/5 dark:from-indigo-500/20 dark:via-zinc-900 dark:to-fuchsia-500/15 md:p-12"
         >
-          <div className="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-indigo-300/25 blur-3xl dark:bg-indigo-500/20" />
-          <div className="pointer-events-none absolute -bottom-24 right-0 h-64 w-64 rounded-full bg-fuchsia-300/20 blur-3xl dark:bg-fuchsia-500/15" />
+          <div className="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-indigo-300/25 blur-3xl dark:bg-indigo-500/30" />
+          <div className="pointer-events-none absolute -bottom-24 right-0 h-64 w-64 rounded-full bg-fuchsia-300/20 blur-3xl dark:bg-fuchsia-500/20" />
           <div className="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="max-w-xl">
-              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white/80 px-3 py-1 text-[11px] text-zinc-600 dark:border-white/15 dark:bg-black/30 dark:text-zinc-300">
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white/80 px-3 py-1 text-[11px] text-zinc-600 dark:border-white/20 dark:bg-white/10 dark:text-zinc-200">
                 <MessageCircle className="h-3.5 w-3.5 text-indigo-300" />
                 Monthly field notes
               </div>
               <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white md:text-3xl">
                 Get launch checklists, UI references, and experiments we are running.
               </h3>
-              <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-300">
                 No fluff — one email every few weeks. Unsubscribe anytime.
               </p>
             </div>
@@ -470,11 +470,11 @@ export function NewsletterCtaSection() {
               <Input
                 type="email"
                 placeholder="you@company.com"
-                className="h-12 border-zinc-300 bg-white text-zinc-900 placeholder:text-zinc-500 dark:border-white/15 dark:bg-black/40 dark:text-white dark:placeholder:text-zinc-500"
+                className="h-12 border-zinc-300 bg-white text-zinc-900 placeholder:text-zinc-500 dark:border-white/20 dark:bg-zinc-900/80 dark:text-zinc-100 dark:placeholder:text-zinc-400"
               />
               <Button
                 type="submit"
-                className="h-12 shrink-0 rounded-full bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+                className="h-12 shrink-0 rounded-full bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 Join
               </Button>
@@ -513,7 +513,7 @@ export function SiteFooter() {
             <p className="text-sm font-semibold tracking-[0.18em] text-zinc-900 uppercase dark:text-white">
               Noctra Studio
             </p>
-            <p className="mt-3 max-w-sm text-sm text-zinc-500">
+            <p className="mt-3 max-w-sm text-sm text-zinc-500 dark:text-zinc-300">
               Dark-first digital studio for brands that want craft, velocity, and
               measurable growth.
             </p>
@@ -521,7 +521,7 @@ export function SiteFooter() {
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
             {cols.map((c) => (
               <div key={c.title}>
-                <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+                <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-200">
                   {c.title}
                 </p>
                 <ul className="mt-3 space-y-2">
@@ -529,7 +529,7 @@ export function SiteFooter() {
                     <li key={l}>
                       <a
                         href="#"
-                        className="text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                        className="text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                       >
                         {l}
                       </a>
@@ -541,13 +541,13 @@ export function SiteFooter() {
           </div>
         </div>
         <Separator className="my-10 bg-zinc-300 dark:bg-white/[0.08]" />
-        <div className="flex flex-col gap-3 text-xs text-zinc-600 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Noctra Studio. All rights reserved.</p>
+        <div className="flex flex-col gap-3 text-xs text-zinc-600 dark:text-zinc-300 md:flex-row md:items-center md:justify-between">
+          <p className="rounded-full border border-transparent px-2.5 py-1 dark:border-white/10 dark:bg-white/[0.02]">© {new Date().getFullYear()} Noctra Studio. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-zinc-400">
+            <a href="#" className="rounded-full border border-transparent px-2.5 py-1 hover:text-zinc-400 dark:border-white/10 dark:bg-white/[0.02] dark:hover:text-white">
               Privacy
             </a>
-            <a href="#" className="hover:text-zinc-400">
+            <a href="#" className="rounded-full border border-transparent px-2.5 py-1 hover:text-zinc-400 dark:border-white/10 dark:bg-white/[0.02] dark:hover:text-white">
               Terms
             </a>
           </div>
